@@ -9,7 +9,7 @@ function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-    const [selectedCard, setSelectedCard] = useState('');
+    const [selectedCard, setSelectedCard] = useState({name: '', link: ''});
 
     function handleEditAvatarClick() {
         setIsEditAvatarPopupOpen(true);
@@ -27,13 +27,13 @@ function App() {
         setIsAddPlacePopupOpen(false);
         setIsEditAvatarPopupOpen(false);
         setIsEditProfilePopupOpen(false);
-        setSelectedCard('');
+        setSelectedCard({name: '', link: ''});
     }
 
     function handleCardClick(card) {
         setSelectedCard(card);
     }
-
+ 
   return (
     <div className="page">
     <Header />
