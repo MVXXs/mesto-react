@@ -54,7 +54,7 @@ class Api {
             headers: this._headers,
             body: JSON.stringify({
                 name: data.name,
-                link: data.about
+                link: data.link
             })
         })
         .then (this._checkDataError);
@@ -64,17 +64,6 @@ class Api {
         return fetch(`${this._baseUrl}/cards/${cardId}`, {
             method: 'DELETE',
             headers: this._headers,
-        })
-        .then (this._checkDataError);
-    }
-
-    editAvatar(data) {
-        return fetch(`${this._baseUrl}/users/me/avatar `, {
-            method: 'PATCH',
-            headers: this._headers,
-            body: JSON.stringify({
-                avatar: data.avatar
-            })
         })
         .then (this._checkDataError);
     }
@@ -94,6 +83,13 @@ class Api {
         })
         .then (this._checkDataError);
     }
+
+    changeLikeCardStatus(id, isLiked) {
+        if (isLiked) {
+            return this.setLike(id);
+        }
+        return this.deleteLike(id);
+    }
 }
 
 export const apiInfo = new Api({
@@ -103,5 +99,3 @@ export const apiInfo = new Api({
       'Content-Type': 'application/json'
     }
 });
-
-// export { Api };
